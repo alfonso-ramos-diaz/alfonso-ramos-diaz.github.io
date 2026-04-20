@@ -117,25 +117,6 @@
 </head>
 
 <body>
-<script>
-  const aboutBtn = document.getElementById('about-btn');
-  const aboutSection = document.getElementById('about');
-  const projectsLink = document.querySelector('a[href="#projects"]');
-
-  aboutBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-
-    aboutSection.classList.toggle('hidden');
-
-    if (!aboutSection.classList.contains('hidden')) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-
-  projectsLink.addEventListener('click', function() {
-    aboutSection.classList.add('hidden');
-  });
-</script>
 <header>
   <div class="header-container">
     
@@ -214,6 +195,24 @@
   </div>
 
 </section>
+<script>
+  const aboutBtn = document.getElementById('about-btn');
+  const aboutSection = document.getElementById('about');
+  const projectsLink = document.querySelector('a[href="#projects"]');
 
+  aboutBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    aboutSection.classList.toggle('hidden');
+
+    if (!aboutSection.classList.contains('hidden')) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  projectsLink.addEventListener('click', function() {
+    aboutSection.classList.add('hidden');
+  });
+</script>
 </body>
 </html>
