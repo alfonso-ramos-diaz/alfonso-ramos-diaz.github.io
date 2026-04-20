@@ -118,7 +118,23 @@
       margin-top: 10px;
       font-weight: 500;
     }
+    .back-btn {
+      margin-bottom: 20px;
+      padding: 8px 15px;
+      border: none;
+      background-color: #4F8F86;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
+    .back-btn:hover {
+      background-color: #3b6f68;
+    }
+
+    .tool {
+      cursor: pointer;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -216,7 +232,20 @@
       <img src="pymol_logo.png" alt="PyMOL">
       <p>PyMOL</p>
     </div>
+  </div>
+  <div id="tool-content" class="hidden">
+    <button onclick="goBack()" class="back-btn">← Back to Tools & Skills</button>
+    <div class="tool-section" id="tool-placeholder">
+        <h3 id="tool-title">Tool Name</h3>
 
+        <p class="coming-soon">
+        This section is currently under development.
+        </p>
+
+        <p>
+        Practical examples and projects demonstrating the use of this tool will be added soon.
+        </p>
+    </div>
   </div>
 </section>
 <script>
@@ -236,6 +265,22 @@
 
   projectsLink.addEventListener('click', function() {
     aboutSection.classList.add('hidden');
+
+  function showTool(toolId) {
+    document.getElementById('tools-grid').classList.add('hidden');
+    document.getElementById('tool-content').classList.remove('hidden');
+
+    document.querySelectorAll('.tool-section').forEach(section => {
+      section.classList.add('hidden');
+    });
+
+    document.getElementById(toolId).classList.remove('hidden');
+  }
+
+  function goBack() {
+    document.getElementById('tools-grid').classList.remove('hidden');
+    document.getElementById('tool-content').classList.add('hidden');
+  }
   });
 </script>
 </body>
