@@ -251,44 +251,45 @@
 <script>
   const aboutBtn = document.getElementById('about-btn');
   const aboutSection = document.getElementById('about');
-  const toolsLink = document.querySelector('a[href="#tools"]');
 
-  // ABOUT toggle
+  const toolsLink = document.querySelector('a[href="#tools"]');
+  const toolsSection = document.getElementById('tools');
+
+  // ===== ABOUT =====
   aboutBtn.addEventListener('click', function(e) {
     e.preventDefault();
 
-    // cerrar tools si estaban abiertos en modo interno
-    goBack();
-
+    // mostrar about
     aboutSection.classList.toggle('hidden');
+
+    // ocultar tools (solo sección, no estado interno)
+    toolsSection.classList.remove('hidden');
+
+    // reset tools interno SI vienes de About
+    goBack();
 
     if (!aboutSection.classList.contains('hidden')) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   });
 
-  toolsBtn.addEventListener('click', function(e) {
+  // ===== NAV TOOLS =====
+  toolsLink.addEventListener('click', function(e) {
     e.preventDefault();
 
-    // cerrar about
+    // ocultar about
     aboutSection.classList.add('hidden');
 
-    // mostrar tools
+    // mostrar tools (siempre visible)
     toolsSection.classList.remove('hidden');
 
-    // 🔥 reset interno
+    // 🔥 IMPORTANTE: volver al grid (estado base)
     goBack();
 
     toolsSection.scrollIntoView({ behavior: 'smooth' });
   });
 
-  // TOOLS click
-  toolsLink.addEventListener('click', function() {
-    aboutSection.classList.add('hidden');
-    goBack(); // vuelve al grid si estabas dentro de una tool
-  });
-
-  // TOOL CLICK
+  // ===== TOOL CLICK (nivel interno) =====
   function showTool(toolId) {
     document.getElementById('tools-grid').classList.add('hidden');
     document.getElementById('tool-content').classList.remove('hidden');
@@ -304,7 +305,7 @@
     document.getElementById('tool-title').textContent = titles[toolId];
   }
 
-  // BACK BUTTON
+  // ===== BACK BUTTON =====
   function goBack() {
     document.getElementById('tools-grid').classList.remove('hidden');
     document.getElementById('tool-content').classList.add('hidden');
