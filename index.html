@@ -267,6 +267,21 @@
     }
   });
 
+  toolsBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // cerrar about
+    aboutSection.classList.add('hidden');
+
+    // mostrar tools
+    toolsSection.classList.remove('hidden');
+
+    // 🔥 reset interno
+    goBack();
+
+    toolsSection.scrollIntoView({ behavior: 'smooth' });
+  });
+
   // TOOLS click
   toolsLink.addEventListener('click', function() {
     aboutSection.classList.add('hidden');
