@@ -206,30 +206,30 @@
 <section id="tools">
   <h2>Tools & Skills</h2>
 
-  <div class="tools-grid">
+  <div class="tools-grid" id="tools-grid">
 
     <div class="tool">
-      <img src="python_logo.png" alt="Python">
+      <img src="python_logo.png" alt="Python" onclick="showTool('python')">
       <p>Python</p>
     </div>
 
     <div class="tool">
-      <img src="r_logo.png" alt="R">
+      <img src="r_logo.png" alt="R" onclick="showTool('r')">
       <p>R</p>
     </div>
 
     <div class="tool">
-      <img src="blast_logo.png" alt="BLAST">
+      <img src="blast_logo.png" alt="BLAST" onclick="showTool('blast')">
       <p>BLAST</p>
     </div>
 
     <div class="tool">
-      <img src="nextflow_logo.png" alt="Nextflow">
+      <img src="nextflow_logo.png" alt="Nextflow" onclick="showTool('nextflow')">
       <p>Nextflow</p>
     </div>
 
     <div class="tool">
-      <img src="pymol_logo.png" alt="PyMOL">
+      <img src="pymol_logo.png" alt="PyMOL" onclick="showTool('pymol')">
       <p>PyMOL</p>
     </div>
   </div>
@@ -251,10 +251,14 @@
 <script>
   const aboutBtn = document.getElementById('about-btn');
   const aboutSection = document.getElementById('about');
-  const projectsLink = document.querySelector('a[href="#tools"]');
+  const toolsLink = document.querySelector('a[href="#tools"]');
 
+  // ABOUT toggle
   aboutBtn.addEventListener('click', function(e) {
     e.preventDefault();
+
+    // cerrar tools si estaban abiertos en modo interno
+    goBack();
 
     aboutSection.classList.toggle('hidden');
 
@@ -263,25 +267,33 @@
     }
   });
 
-  projectsLink.addEventListener('click', function() {
+  // TOOLS click
+  toolsLink.addEventListener('click', function() {
     aboutSection.classList.add('hidden');
+    goBack(); // vuelve al grid si estabas dentro de una tool
+  });
 
+  // TOOL CLICK
   function showTool(toolId) {
     document.getElementById('tools-grid').classList.add('hidden');
     document.getElementById('tool-content').classList.remove('hidden');
 
-    document.querySelectorAll('.tool-section').forEach(section => {
-      section.classList.add('hidden');
-    });
+    const titles = {
+      python: "Python",
+      r: "R",
+      blast: "BLAST",
+      nextflow: "Nextflow",
+      pymol: "PyMOL"
+    };
 
-    document.getElementById(toolId).classList.remove('hidden');
+    document.getElementById('tool-title').textContent = titles[toolId];
   }
 
+  // BACK BUTTON
   function goBack() {
     document.getElementById('tools-grid').classList.remove('hidden');
     document.getElementById('tool-content').classList.add('hidden');
   }
-  });
 </script>
 </body>
 </html>
