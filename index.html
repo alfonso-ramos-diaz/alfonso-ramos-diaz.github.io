@@ -88,22 +88,35 @@
       padding-bottom: 5px;
     }
 
-    .project {
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .tool {
       background: white;
       padding: 20px;
-      margin-top: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
-    .project h3 {
-      margin-top: 0;
+    .tool:hover {
+      transform: translateY(-5px);
     }
 
-    .project a {
-      color: #4F8F86;
-      text-decoration: none;
-      font-weight: bold;
+    .tool img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .tool p {
+      margin-top: 10px;
+      font-weight: 500;
     }
 
     footer {
@@ -126,7 +139,7 @@
 
     <nav class="nav-links">
       <a href="#" id="about-btn">About</a>
-      <a href="#projects">Projects</a>
+      <a href="#tools">Tools & Skills</a>
     </nav>
 
     <div class="contact-icons">
@@ -174,31 +187,42 @@
   </p>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
+<section id="tools">
+  <h2>Tools & Skills</h2>
 
-  <div class="project">
-    <h3>Recover+ Project</h3>
-    <p>
-      Co-design of a digital health solution to improve recovery pathways,
-      integrating patient insights and qualitative data analysis.
-    </p>
-    <a href="#">View project</a>
+  <div class="tools-grid">
+
+    <div class="tool">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.png" alt="Python">
+      <p>Python</p>
+    </div>
+
+    <div class="tool">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.png" alt="R">
+      <p>R</p>
+    </div>
+
+    <div class="tool">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/BLAST_logo.png" alt="BLAST">
+      <p>BLAST</p>
+    </div>
+
+    <div class="tool">
+      <img src="https://avatars.githubusercontent.com/u/322013?v=4" alt="Nextflow">
+      <p>Nextflow</p>
+    </div>
+
+    <div class="tool">
+      <img src="https://pymol.org/images/logo.png" alt="PyMOL">
+      <p>PyMOL</p>
+    </div>
+
   </div>
-
-  <div class="project">
-    <h3>Genomics Data Analysis</h3>
-    <p>
-      Development of pipelines for rare disease data analysis using Python and bioinformatics tools.
-    </p>
-    <a href="#">View on GitHub</a>
-  </div>
-
 </section>
 <script>
   const aboutBtn = document.getElementById('about-btn');
   const aboutSection = document.getElementById('about');
-  const projectsLink = document.querySelector('a[href="#projects"]');
+  const projectsLink = document.querySelector('a[href="#tools"]');
 
   aboutBtn.addEventListener('click', function(e) {
     e.preventDefault();
